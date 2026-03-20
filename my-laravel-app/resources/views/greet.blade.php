@@ -8,5 +8,6 @@
 <body>
     <h1>Welcome to Laravel!</h1>
     <p>This page is returned by GreetController using a Blade view.</p>
+    <p><a href="{{ route('tasks.index') }}">Go to Tasks CRUD</a></p>
 </body>
 </html>
