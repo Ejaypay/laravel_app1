@@ -23,7 +23,6 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'is_completed' => 'nullable|boolean',
         ]);
 
         $validated['is_completed'] = $request->has('is_completed');
@@ -49,7 +48,6 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'is_completed' => 'nullable|boolean',
         ]);
 
         $validated['is_completed'] = $request->has('is_completed');
