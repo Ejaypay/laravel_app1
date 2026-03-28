@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting Page</title>
-</head>
-<body>
-    <h1>Welcome to Laravel!</h1>
-    <p>This page is returned by GreetController using a Blade view.</p>
-    <p><a href="{{ route('tasks.index') }}">Go to Tasks CRUD</a></p>
-</body>
-</html>
+@extends('layouts.app')
+
+@section('content')
+    <div class="rounded-xl bg-white p-8 shadow">
+        <h2 class="text-3xl font-bold text-blue-600">Hello from Greet Page</h2>
+        <p class="mt-4 text-slate-600">Tailwind is working if this page looks styled.</p>
+    </div>
+@endsection
