@@ -1,44 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Task</title>
-</head>
-<body>
-    <h1>Create Task</h1>
+@extends('layouts.app')
 
-    <p><a href="{{ route('tasks.index') }}">Back to Tasks</a></p>
+@section('content')
+    <div class="mx-auto max-w-2xl rounded-xl bg-white p-8 shadow">
+        <h2 class="text-3xl font-bold">Create Task</h2>
 
-    @if($errors->any())
-        <ul style="color:red;">
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+        @if($errors->any())
+            <ul class="mt-4 list-disc pl-5 text-red-600">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
 
-    <form action="{{ route('tasks.store') }}" method="POST">
-        @csrf
+        <form action="{{ route('tasks.store') }}" method="POST" class="mt-6 space-y-4">
+            @csrf
 
-        <div>
-            <label>Title:</label><br>
-            <input type="text" name="title" value="{{ old('title') }}">
-        </div>
+            <div>
+                <label class="mb-2 block font-medium">Title</label>
+                <input type="text" name="title" value="{{ old('title') }}" class="w-full rounded border px-4 py-2">
+            </div>
 
-        <div>
-            <label>Description:</label><br>
-            <textarea name="description">{{ old('description') }}</textarea>
-        </div>
+            <div>
+                <label class="mb-2 block font-medium">Description</label>
+                <textarea name="description" class="w-full rounded border px-4 py-2">{{ old('description') }}</textarea>
+            </div>
 
-        <div>
-            <label>
-                <input type="checkbox" name="is_completed" value="1" {{ old('is_completed') ? 'checked' : '' }}>
-                Completed
-            </label>
-        </div>
+            <div>
+                <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" name="is_completed" value="1" {{ old('is_completed') ? 'checked' : '' }}>
+                    <span>Completed</span>
+                </label>
+            </div>
 
-        <button type="submit">Save Task</button>
-    </form>
-</body>
-</html>
+            <button type="submit" class="rounded bg-blue-600 px-4 py-2 text-white">Save Task</button>
+        </form>
+    </div>
+@endsection
